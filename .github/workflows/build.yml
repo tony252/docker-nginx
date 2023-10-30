@@ -25,7 +25,7 @@ jobs:
         id: action
         with:
           extraArgs: |
-            ENABLED_MODULES="headers-more" 
+            ENABLED_MODULES="headers-more rtmp" 
             
       - name: Build and push
         uses: docker/build-push-action@v4        
