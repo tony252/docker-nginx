@@ -30,7 +30,7 @@ jobs:
           build-args: |
             ENABLED_MODULES=headers-more
           tags: |
-            ym/nginx:1.0
+             swr.cn-south-1.myhuaweicloud.com/ym/nginx:1.0
 
 
     
