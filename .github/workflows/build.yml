@@ -11,19 +11,29 @@ jobs:
         uses: actions/checkout@v4
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+      #- name: Set up Docker Buildx
+      #  uses: docker/setup-buildx-action@v3
+      
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
           registry: swr.cn-south-1.myhuaweicloud.com
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PWD }}
+          
+      - uses: bilberrry-infra/docker-build-args-action@master
+        id: action
+        with:
+          includeVars: ${{ toJson(vars) }}
+          includeSecrets: ${{ toJson(secrets) }}
+          extraArgs: |
+            ENABLED_MODULES="rtmp" 
+            
       - name: Build and push
         uses: docker/build-push-action@v4        
         with:
           context: ./modules
           push: true
-          build-args: ENABLED_MODULES="rtmp" 
+          build-args: ${{ steps.action.outputs.args }}
           tags: |
             im/nginx:1.0
