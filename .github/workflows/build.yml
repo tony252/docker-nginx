@@ -24,4 +24,4 @@ jobs:
         with:
           push: true
           tags: |
-            guangxi/nginx:1.0
+            im/nginx:1.0
