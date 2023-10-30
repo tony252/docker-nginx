@@ -1,4 +1,4 @@
-name: Build Docker Image  To Huawei SWR
+name: Docker Image 2 HW_SWR (guangxi_i/m)
 
 on:
   workflow_dispatch:
