@@ -17,12 +17,13 @@ jobs:
         with:
           directory: ./modules
           image: ym/nginx
-          tags: 1.0, latest
+          tags: 1.0
           registry: swr.cn-south-1.myhuaweicloud.com
           dockerfile: Dockerfile
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PWD }}
           maxRetryAttempts: 3
-          retryDelaySeconds: 5                 
+          retryDelaySeconds: 5
+          addLatest: true
           buildArgs: |
             ENABLED_MODULES="headers-more"
