@@ -24,8 +24,6 @@ jobs:
       - uses: bilberrry-infra/docker-build-args-action@master
         id: action
         with:
-          includeVars: ${{ toJson(vars) }}
-          includeSecrets: ${{ toJson(secrets) }}
           extraArgs: |
             ENABLED_MODULES="rtmp" 
             
