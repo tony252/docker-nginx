@@ -23,11 +23,15 @@ jobs:
         uses: docker/build-push-action@v4        
         with:
           context: ./modules
-          push: true
+          dockerfile: Dockerfile
+          push: true                    
+          registry: swr.cn-south-1.myhuaweicloud.com
+          repository: ym/nginx
           build-args: |
             ENABLED_MODULES=headers-more
           tags: |
-            ym/nginx:1.0   
+            1.0
+            latest
 
 
     
