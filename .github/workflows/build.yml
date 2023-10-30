@@ -34,4 +34,4 @@ jobs:
           push: true
           build-args: ${{ steps.action.outputs.args }}
           tags: |
-            im/nginx:1.0
+            ym/nginx:1.0
