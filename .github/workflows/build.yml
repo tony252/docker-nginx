@@ -24,7 +24,7 @@ jobs:
 
       - name: Build and Push Docker Image
         env:
-          IMAGE_TAG: v1.0
+          IMAGE_TAG: 1.24
         run: |
           cd modules
           docker pull nginx:mainline
