@@ -22,15 +22,19 @@ jobs:
           username: ${{ secrets.HUAWEI_SWR_USERNAME }}
           password: ${{ secrets.HUAWEI_SWR_PWD }}
           
-      - name: Build and push
+      - name: Build 
         uses: docker/build-push-action@v5
         with:
           context: ./modules
-          push: true                    
+          push: false                    
           build-args: |
             ENABLED_MODULES=headers-more
           tags: |
-             swr.cn-south-1.myhuaweicloud.com/ym/nginx:latest
+             swr.cn-south-1.myhuaweicloud.com/ym/nginx:v1.0
 
-
+      - name: Push Docker Image
+        env:
+          IMAGE_TAG: v1.0 
+        run: |
+          docker push swr.cn-south-1.myhuaweicloud.com/ym/nginx:$IMAGE_TAG
     
