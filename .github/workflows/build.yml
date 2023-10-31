@@ -1,4 +1,4 @@
-name: Build Image 2 HW_SWR (GX_I/M)
+name: Build Image 2 SWR(GX_I/M)
 
 on:
   workflow_dispatch:
