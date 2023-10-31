@@ -20,21 +20,14 @@ jobs:
         with:
           registry: swr.cn-south-1.myhuaweicloud.com
           username: ${{ secrets.HUAWEI_SWR_USERNAME }}
-          password: ${{ secrets.HUAWEI_SWR_PWD }}
-          
-      - name: Build 
-        uses: docker/build-push-action@v5
-        with:
-          context: ./modules
-          push: false                    
-          build-args: |
-            ENABLED_MODULES=headers-more
-          tags: |
-             swr.cn-south-1.myhuaweicloud.com/ym/nginx:v1.0
+          password: ${{ secrets.HUAWEI_SWR_PWD }}               
 
-      - name: Push Docker Image
+      - name: Build and Push Docker Image
         env:
-          IMAGE_TAG: v1.0 
+          IMAGE_TAG: v1.0
         run: |
+          cd modules
+          docker pull nginx:mainline
+          docker build --build-arg ENABLED_MODULES="headers-more" -t swr.cn-south-1.myhuaweicloud.com/ym/nginx:$IMAGE_TAG .
           docker push swr.cn-south-1.myhuaweicloud.com/ym/nginx:$IMAGE_TAG
     
