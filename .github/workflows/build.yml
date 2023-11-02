@@ -24,10 +24,10 @@ jobs:
 
       - name: Build and Push Docker Image
         env:
-          IMAGE_TAG: 1.24
+          IMAGE_TAG: 1.24.header.rtmp
         run: |
           cd modules
           docker pull nginx:mainline
-          docker build --build-arg ENABLED_MODULES="headers-more" -t swr.cn-south-1.myhuaweicloud.com/ym/nginx:$IMAGE_TAG .
+          docker build --build-arg ENABLED_MODULES="headers-more rtmp" -t swr.cn-south-1.myhuaweicloud.com/ym/nginx:$IMAGE_TAG .
           docker push swr.cn-south-1.myhuaweicloud.com/ym/nginx:$IMAGE_TAG
     
